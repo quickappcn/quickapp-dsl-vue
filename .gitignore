@@ -1,0 +1,12 @@
+*~
+.DS_Store
+Thumbs.db
+
+*.log
+*.iml
+.idea/
+node_modules/
+/dist/release/dsls
+/dist/release/output/*.js.map
+/dist/debug
+/test/build
