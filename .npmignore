@@ -1,0 +1,12 @@
+node_modules
+
+src/*
+test/*
+config/*
+
+babel.config.js
+
+dist/debug
+dist/release/output
+
+**/*.js.map
