@@ -4223,16 +4223,6 @@ function createElement (
   normalizationType,
   alwaysNormalize
 ) {
-
-  if (context.$options._scopeId) {
-    if (data && data.staticClass) {
-      data.staticClass = data.staticClass.split(' ').map(function (item) { return context.$options._scopeId + '-' + item; }).join(' ');
-    }
-    if (data && data.class) {
-      data.class = data.class.split(' ').map(function (item) { return context.$options._scopeId + '-' + item; }).join(' ');
-    }
-  }
-
   if (Array.isArray(data) || isPrimitive(data)) {
     normalizationType = children;
     children = data;
@@ -4452,6 +4442,7 @@ function initMixin (Vue) {
     var vm = this;
     // a uid
     vm._uid = uid$1++;
+
     var startTag, endTag;
     /* istanbul ignore if */
     if ("development" !== 'production' && config.performance && mark) {
@@ -4944,7 +4935,6 @@ Object.defineProperty(Vue$2.prototype, '$ssrContext', {
 });
 
 Vue$2.version = '2.5.3';
-Vue$2.quickappVersion = '1.0.0';
 
 /* globals document */
 /* globals quickappHelper */
