@@ -1,9 +1,12 @@
 # quickapp-dsl-vue
 
+<br/>
+
 该项目为快应用平台中，Vue框架的适配代码；
 
 运行其中的`npm run build`会在`dist`目录下生成对应的DSL文件，而这个文件会被内置在快应用的平台APK中；
 
+<br/>
 
 ## 相关项目简介
 
@@ -19,6 +22,11 @@
 
 快应用官方的Vue DSL项目；补充其中的APP/Page的生命周期、系统能力的获取调用；
 
+### [quickappcn/todomvc-vue](https://github.com/quickappcn/todomvc-vue)
+
+快应用平台中运行，使用Vue DSL开发的TodoMVC项目；
+
+<br/>
 
 ## 如何使用Vue开发快应用
 
@@ -40,7 +48,7 @@ hap -v
 
 # 初始化项目
 hap init vue-demo101 --vue      # 如果toolkit版本为0.3
-hap init vue-demo101 --dsl vue  # 如果toolkit版本为0.4及其以后
+hap init vue-demo101 --dsl=vue  # 如果toolkit版本为0.4及其以后
 
 # 进入项目并安装依赖
 cd vue-demo
@@ -66,11 +74,11 @@ npm run release         # 代码压缩，用于上线
 
 #### 1. 下载运行平台
 
-开发者可以从[这里]()下载运行快应用平台APK；
+开发者可以从[这里](https://statres.quickapp.cn/quickapp/quickapp/201806/file/quickapp_debugger.apk)下载运行快应用平台APK；
 
 #### 2. 安装调试器
 
-开发者可以从[这里]()下载运行快应用调试器APK；
+开发者可以从[这里](./resource/platform/quickapp-1050-prerelease-vue.apk)下载运行快应用调试器APK；
 
 ### 3. 加载编译构建的RPK文件
 
@@ -78,7 +86,7 @@ npm run release         # 代码压缩，用于上线
 
 使用方式与标准的DSL开发一样；具体请参考[快应用官方文档教程](https://doc.quickapp.cn/tutorial/overview/use-command.html)
 
-
+<br/>
 
 ## 如何Vue DSL中的代码
 
