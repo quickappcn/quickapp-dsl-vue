@@ -78,7 +78,7 @@ npm run release         # 代码压缩，用于上线
 
 #### 2. 安装调试器
 
-开发者可以从[这里](./resource/platform/quickapp-1050-prerelease-vue.apk)下载运行快应用调试器APK；
+开发者可以从[这里](./resource/platform)下载运行快应用调试器APK；
 
 ### 3. 加载编译构建的RPK文件
 
