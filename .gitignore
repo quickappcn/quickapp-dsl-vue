@@ -5,6 +5,7 @@ Thumbs.db
 *.log
 *.iml
 .idea/
+package-lock.json
 node_modules/
 /dist/release/dsls
 /dist/release/output/*.js.map
