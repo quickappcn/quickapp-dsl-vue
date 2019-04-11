@@ -43,12 +43,11 @@
 # 全局安装hap-toolkit
 npm install hap-toolkit -g
 
-# 确认版本大于0.3.0
+# 确认版本大于0.4.1
 hap -v
 
 # 初始化项目
-hap init vue-demo101 --vue      # 如果toolkit版本为0.3
-hap init vue-demo101 --dsl=vue  # 如果toolkit版本为0.4及其以后
+hap init vue-demo --dsl=vue  # 如果toolkit版本为0.4.1及其以后
 
 # 进入项目并安装依赖
 cd vue-demo
@@ -74,13 +73,13 @@ npm run release         # 代码压缩，用于上线
 
 #### 1. 下载运行平台
 
-开发者可以从[这里](https://statres.quickapp.cn/quickapp/quickapp/201806/file/quickapp_debugger.apk)下载运行快应用平台APK；
+开发者可以从[这里](./resource/platform)下载运行快应用平台APK；
 
 #### 2. 安装调试器
 
-开发者可以从[这里](./resource/platform)下载运行快应用调试器APK；
+开发者可以从[这里](https://statres.quickapp.cn/quickapp/quickapp/201806/file/quickapp_debugger.apk)下载运行快应用调试器APK；
 
-### 3. 加载编译构建的RPK文件
+#### 3. 加载编译构建的RPK文件
 
 开发者可以在调试器中选择`本地安装`或者`在线更新`的方式，来加载RPK文件；
 
@@ -88,10 +87,10 @@ npm run release         # 代码压缩，用于上线
 
 <br/>
 
-## 如何Vue DSL中的代码
+## 联系我们
 
 当您发现当前内测版本中的Vue框架代码有`功能缺失`或者`BUG`时，您可以向我们提出ISSUE；
 
-当然如何是高级开发者，也可以提交Merge Request进来；
+当然如果是高级开发者，也可以提交Merge Request进来；
 
 
