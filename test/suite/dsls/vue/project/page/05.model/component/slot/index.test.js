@@ -4,8 +4,6 @@
 
 import { uniqueId, initPage, callActionJsonList } from '../../../../utils/imports'
 
-import { toString } from '../../../../utils/helper'
-
 describe(`框架：05.测试slot组件`, () => {
   const pageId = uniqueId()
   let page, pageVm

@@ -21,7 +21,7 @@ describe('Global API: set/delete', () => {
     it('should update a observing object', done => {
       const vm = new Vue({
         template: '<div>{{foo.x}}</div>',
-        data: { foo: { x: 1 } }
+        data: { foo: { x: 1 }}
       }).$mount()
       expect(vm.$el.attr.value).to.equal('1')
       Vue.set(vm.foo, 'x', 2)
@@ -138,7 +138,7 @@ describe('Global API: set/delete', () => {
     it('should delete a key', done => {
       const vm = new Vue({
         template: '<div>{{obj.x}}</div>',
-        data: { obj: { x: 1 } }
+        data: { obj: { x: 1 }}
       }).$mount()
       expect(vm.$el.attr.value).to.equal('1')
       vm.obj.x = 2

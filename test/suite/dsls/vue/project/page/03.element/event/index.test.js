@@ -8,7 +8,7 @@ import { toString } from '../../../utils/helper'
 
 describe(`框架：03.测试事件触发`, () => {
   const pageId = uniqueId()
-  let page, pageVm, pageDoc
+  let page, pageVm, pageDoc // eslint-disable-line no-unused-vars
 
   before(() => {
     callActionJsonList.splice(0)
@@ -32,7 +32,7 @@ describe(`框架：03.测试事件触发`, () => {
     const text1 = pageVm.$refs.text1
     const div1 = pageVm.$refs.div1
     expect(toString(text1)).to.deep.equal('<text value="Hello World"></text>')
-    processCallbacks(pageId, [
+    global.processCallbacks(pageId, [
       {
         action: 1,
         args: [div1.ref, 'click', {}]

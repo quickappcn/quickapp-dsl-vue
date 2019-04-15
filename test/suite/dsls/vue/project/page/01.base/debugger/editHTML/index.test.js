@@ -136,7 +136,7 @@ describe('框架：01.调试器工具', () => {
     global.replacePageElementWithHtml(page.id, inst.ref, pageVm.html9)
 
     const instNewNodeLink0 = instParentNode.layoutChildren[1]
-    const instNewNodeText0 = instNewNodeLink0.layoutChildren[0]
+    // const instNewNodeText0 = instNewNodeLink0.layoutChildren[0]
 
     expect(instNewNodeLink0.tagName).to.equal('span'.toUpperCase())
     expect(instNewNodeLink0.attr.value).to.equal('SPAN内容1')

@@ -3,7 +3,7 @@ import Vue from '../../utils/vue'
 import { toString, firstChild } from '../../utils/helper'
 
 describe('Directive v-once', () => {
-  let oriConsole, countWarn, countError
+  let oriConsole, countWarn, countError // eslint-disable-line no-unused-vars
 
   beforeEach(() => {
     oriConsole = console

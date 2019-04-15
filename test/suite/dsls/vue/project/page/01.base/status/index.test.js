@@ -19,7 +19,7 @@ describe('框架：01.页面以及VM的状态管理', () => {
   after(() => {
     callActionJsonList.splice(0)
 
-    suppressConsole(() => {
+    global.suppressConsole(() => {
       global.destroyPage(pageId)
     })
   })

@@ -3,7 +3,7 @@ import Vue from '../../utils/vue'
 
 describe('Options props', () => {
   let oriConsole
-  let countWarn = 0
+  let countWarn = 0 // eslint-disable-line no-unused-vars
   let countError = 0
 
   beforeEach(() => {
@@ -163,7 +163,7 @@ describe('Options props', () => {
       template: '<test></test>',
       components: {
         test: {
-          props: { a: { required: true } },
+          props: { a: { required: true }},
           template: '<div>{{a}}</div>'
         }
       }

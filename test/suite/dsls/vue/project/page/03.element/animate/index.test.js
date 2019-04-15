@@ -48,7 +48,7 @@ describe('框架：03.Animation', () => {
       needLayout: true
     }
     testAnimationNode = pageVm.$refs.testAnimation
-    let animateInstance = testAnimationNode.animate(keyframes, options)
+    const animateInstance = testAnimationNode.animate(keyframes, options)
 
     animateInstance.startTime = 1000
     expect(animateInstance.startTime).to.equal(1000)

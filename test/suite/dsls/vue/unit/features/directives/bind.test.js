@@ -10,7 +10,7 @@ import {
 } from '../../utils/helper'
 
 describe('Component slot', () => {
-  let oriConsole, countWarn, countError
+  let oriConsole, countWarn, countError // eslint-disable-line no-unused-vars
 
   beforeEach(() => {
     oriConsole = console

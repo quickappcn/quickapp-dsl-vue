@@ -102,7 +102,7 @@ describe('Options watch', () => {
 
   it('with option: deep', done => {
     const vm = new Vue({
-      data: { a: { b: 1 } },
+      data: { a: { b: 1 }},
       watch: {
         a: {
           handler: spy,

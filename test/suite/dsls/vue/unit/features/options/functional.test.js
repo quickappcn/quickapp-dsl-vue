@@ -157,7 +157,7 @@ describe('Options functional', () => {
           _vm._t('slot2'),
           _vm._t('scoped', null, { msg: _vm.props.msg }),
           _vm._m(0),
-          _c('div', { ref: 'ref1', staticClass: 'clickable', on: { click: _vm.parent.fn } }, [
+          _c('div', { ref: 'ref1', staticClass: 'clickable', on: { click: _vm.parent.fn }}, [
             _vm._v('click me')
           ])
         ],

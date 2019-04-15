@@ -111,21 +111,22 @@ describe('框架：03.Canvas', () => {
     expect(imagedata2.height).to.equal(20)
     expect(imagedata2.data).to.be.a('Uint8ClampedArray')
     expect(imagedata2.data).to.have.lengthOf(10 * 20 * 4)
-  }),
-    it('Canvas lineDashOffset', () => {
-      const canvas = pageVm.$refs.canvasInst1
-      const ctx = canvas.getContext('2d')
+  })
 
-      // lineDashOffset 属性值必须为数组类型且不能为 NaN
-      expect(ctx.lineDashOffset).to.equal(0)
+  it('Canvas lineDashOffset', () => {
+    const canvas = pageVm.$refs.canvasInst1
+    const ctx = canvas.getContext('2d')
 
-      ctx.lineDashOffset = '22'
-      expect(ctx.lineDashOffset).to.equal(0)
+    // lineDashOffset 属性值必须为数组类型且不能为 NaN
+    expect(ctx.lineDashOffset).to.equal(0)
 
-      ctx.lineDashOffset = NaN
-      expect(ctx.lineDashOffset).to.equal(0)
+    ctx.lineDashOffset = '22'
+    expect(ctx.lineDashOffset).to.equal(0)
 
-      ctx.lineDashOffset = 5
-      expect(ctx.lineDashOffset).to.equal(5)
-    })
+    ctx.lineDashOffset = NaN
+    expect(ctx.lineDashOffset).to.equal(0)
+
+    ctx.lineDashOffset = 5
+    expect(ctx.lineDashOffset).to.equal(5)
+  })
 })

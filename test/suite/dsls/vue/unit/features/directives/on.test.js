@@ -457,8 +457,8 @@ describe('Directive v-on', () => {
       },
       render(h) {
         return this.ok
-          ? h('input', { on: { click: this.foo } })
-          : h('input', { on: { input: this.bar } })
+          ? h('input', { on: { click: this.foo }})
+          : h('input', { on: { input: this.bar }})
       }
     }).$mount()
     fireEvent(vm.$el, 'click')
@@ -493,8 +493,8 @@ describe('Directive v-on', () => {
       },
       render(h) {
         return this.ok
-          ? h('div', { on: { '!click': this.foo } }, [h('div', { on: { click: this.stopped } })])
-          : h('div', { on: { mouseOver: this.bar } }, [h('div')])
+          ? h('div', { on: { '!click': this.foo }}, [h('div', { on: { click: this.stopped }})])
+          : h('div', { on: { mouseOver: this.bar }}, [h('div')])
       }
     }).$mount()
     fireEvent(firstChild(vm.$el), 'click')
@@ -523,8 +523,8 @@ describe('Directive v-on', () => {
       },
       render(h) {
         return this.ok
-          ? h('input', { on: { '~click': this.foo } })
-          : h('input', { on: { input: this.bar } })
+          ? h('input', { on: { '~click': this.foo }})
+          : h('input', { on: { input: this.bar }})
       }
     }).$mount()
     fireEvent(vm.$el, 'click')
@@ -561,8 +561,8 @@ describe('Directive v-on', () => {
       },
       render(h) {
         return this.ok
-          ? h('div', { on: { '~!click': this.foo } }, [h('div', { on: { click: this.stopped } })])
-          : h('div', { on: { mouseOver: this.bar } }, [h('div')])
+          ? h('div', { on: { '~!click': this.foo }}, [h('div', { on: { click: this.stopped }})])
+          : h('div', { on: { mouseOver: this.bar }}, [h('div')])
       }
     }).$mount()
     fireEvent(firstChild(vm.$el), 'click')
@@ -597,7 +597,7 @@ describe('Directive v-on', () => {
         }
       },
       render(h) {
-        return this.ok ? h('test', { on: { foo: this.foo } }) : h('test', { on: { bar: this.bar } })
+        return this.ok ? h('test', { on: { foo: this.foo }}) : h('test', { on: { bar: this.bar }})
       }
     }).$mount()
     vm.$children[0].$emit('foo')

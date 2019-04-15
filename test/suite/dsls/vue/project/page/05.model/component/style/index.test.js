@@ -8,7 +8,7 @@ import { getStyle } from '../../../../utils/helper'
 
 describe(`框架：05.component测试Style样式绑定`, () => {
   const pageId = uniqueId()
-  let page, pageVm, pageDoc
+  let page, pageVm, pageDoc // eslint-disable-line no-unused-vars
 
   before(() => {
     callActionJsonList.splice(0)
