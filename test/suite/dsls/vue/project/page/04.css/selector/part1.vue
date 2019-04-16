@@ -5,11 +5,13 @@
     </div>
   </div>
 </template>
+
 <script>
 export default {
 
 }
 </script>
+
 <style>
   .class1 {
     color: #ff0000;

@@ -4,6 +4,7 @@
     <part2 ref="ref2"/>
   </div>
 </template>
+
 <script>
 import part1 from './part1.vue'
 import part2 from './part2.vue'
@@ -19,6 +20,7 @@ export default {
   }
 }
 </script>
+
 <style>
   #app {
     color: #00ff00;

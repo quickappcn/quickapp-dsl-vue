@@ -163,7 +163,7 @@ describe('Options props', () => {
       template: '<test></test>',
       components: {
         test: {
-          props: { a: { required: true }},
+          props: { a: { required: true } },
           template: '<div>{{a}}</div>'
         }
       }

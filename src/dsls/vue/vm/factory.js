@@ -6159,6 +6159,17 @@ var events = {
 
 var normalize = cached(camelize);
 
+
+function normalizeStyle (cssText) {
+  var regex = /([\w-]*)\s*:\s*([^;]*)/g;
+  var rules = {};
+  var match;
+  while (match = regex.exec(cssText)) {
+    rules[match[1]] = match[2].trim();
+  }
+  return rules
+}
+
 function createStyle (oldVnode, vnode) {
   if (!vnode.data.staticStyle) {
     updateStyle(oldVnode, vnode);
@@ -6182,6 +6193,14 @@ function updateStyle (oldVnode, vnode) {
   var elm = vnode.elm;
   var oldStyle = oldVnode.data.style || {};
   var style = vnode.data.style || {};
+
+  if (typeof style === 'string') {
+    style = normalizeStyle(style);
+  }
+
+  if (typeof oldStyle === 'string') {
+    oldStyle = normalizeStyle(oldStyle);
+  }
 
   var needClone = style.__ob__;
 
