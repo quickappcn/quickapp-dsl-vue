@@ -156,7 +156,7 @@ describe('Global API: extend', () => {
 
   // #4767
   it('extended options should use different identify from parent', () => {
-    const A = Vue.extend({ computed: {}})
+    const A = Vue.extend({ computed: {} })
     const B = A.extend()
     const computedB = () => 'foo'
     B.options.computed.b = computedB

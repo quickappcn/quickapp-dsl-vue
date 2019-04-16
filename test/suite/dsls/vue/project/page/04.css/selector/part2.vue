@@ -3,11 +3,13 @@
     <div id="app" class="class3" ref="divRef"></div>
   </div>
 </template>
+
 <script>
 export default {
 
 }
 </script>
+
 <style>
   .class3 {
     color: #eeeeee;

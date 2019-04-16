@@ -4,6 +4,13 @@
 
 import { requireByRepo } from '../common'
 
+const proxySendActions = requireByRepo(
+  'dist/release/output/styling',
+  'proxySendActions',
+  'src/infras/styling/index',
+  'proxySendActions'
+)
+
 const { Node, Event, TouchEvent, DomDocument, freeze } = requireByRepo(
   'dist/release/output/infras-ext',
   'dom',
@@ -26,8 +33,7 @@ const Streamer = requireByRepo(
 const helper = requireByRepo(
   'dist/release/output/infras-ext',
   'runtime.helper',
-  'src/infras/runtime/helper',
-  'default'
+  'src/infras/runtime/helper'
 )
 const misc = requireByRepo(
   'dist/release/output/infras-ext',
@@ -64,3 +70,6 @@ global.sendActions = function(instId, actionList) {
     callNativeMessageList.push(msg)
   }
 }
+
+// TODO 通过开关控制
+proxySendActions()

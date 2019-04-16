@@ -5,7 +5,6 @@
 import { uniqueId, initPage, callActionJsonList } from '../../../utils/imports'
 
 /* eslint-disable */
-
 describe('框架：02.native接口', () => {
   const pageId = uniqueId()
   let page, pageVm, model, modRet

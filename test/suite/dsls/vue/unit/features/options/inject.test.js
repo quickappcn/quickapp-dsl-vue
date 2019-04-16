@@ -268,8 +268,8 @@ describe('Options provide/inject', () => {
   })
 
   it('should merge from mixins properly (objects)', () => {
-    const mixinA = { inject: { foo: 'foo' }}
-    const mixinB = { inject: { bar: 'bar' }}
+    const mixinA = { inject: { foo: 'foo' } }
+    const mixinB = { inject: { bar: 'bar' } }
     const child = {
       mixins: [mixinA, mixinB],
       template: `<span/>`,
@@ -309,7 +309,7 @@ describe('Options provide/inject', () => {
   })
 
   it('should merge from mixins properly (mix of objects and arrays)', () => {
-    const mixinA = { inject: { foo: 'foo' }}
+    const mixinA = { inject: { foo: 'foo' } }
     const mixinB = { inject: ['bar'] }
     const child = {
       mixins: [mixinA, mixinB],
@@ -374,7 +374,7 @@ describe('Options provide/inject', () => {
   })
 
   it('should not warn when injection key which is not provided is not enumerable', () => {
-    const parent = new Vue({ provide: { foo: 1 }})
+    const parent = new Vue({ provide: { foo: 1 } })
     const inject = { foo: 'foo' }
     Object.defineProperty(inject, '__ob__', { enumerable: false, value: '__ob__' })
     new Vue({ parent, inject })
@@ -442,8 +442,8 @@ describe('Options provide/inject', () => {
 
   // Github issue #6008
   it('should merge provide from mixins (objects)', () => {
-    const mixinA = { provide: { foo: 'foo' }}
-    const mixinB = { provide: { bar: 'bar' }}
+    const mixinA = { provide: { foo: 'foo' } }
+    const mixinB = { provide: { bar: 'bar' } }
     const child = {
       inject: ['foo', 'bar'],
       template: `<span/>`,
@@ -482,9 +482,9 @@ describe('Options provide/inject', () => {
   })
 
   it('should merge provide from mixins (mix of objects and functions)', () => {
-    const mixinA = { provide: { foo: 'foo' }}
+    const mixinA = { provide: { foo: 'foo' } }
     const mixinB = { provide: () => ({ bar: 'bar' }) }
-    const mixinC = { provide: { baz: 'baz' }}
+    const mixinC = { provide: { baz: 'baz' } }
     const mixinD = { provide: () => ({ bam: 'bam' }) }
     const child = {
       inject: ['foo', 'bar', 'baz', 'bam'],
@@ -504,8 +504,8 @@ describe('Options provide/inject', () => {
   })
 
   it('should merge provide from mixins and override existing keys', () => {
-    const mixinA = { provide: { foo: 'foo' }}
-    const mixinB = { provide: { foo: 'bar' }}
+    const mixinA = { provide: { foo: 'foo' } }
+    const mixinB = { provide: { foo: 'bar' } }
     const child = {
       inject: ['foo'],
       template: `<span/>`,

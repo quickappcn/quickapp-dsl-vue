@@ -9,6 +9,13 @@ import { allFeatureMethList, allFeatureInstHash } from './features/fn'
 
 import { requireByRepo } from '../common'
 
+const proxyCallNative = requireByRepo(
+  'dist/release/output/styling',
+  'proxyCallNative',
+  'src/infras/styling/index',
+  'proxyCallNative'
+)
+
 const Base64 = requireByRepo(
   'dist/release/output/infras-ext',
   'Base64',
@@ -62,6 +69,7 @@ function initMainPlatform(dslName) {
     { name: 'input', methods: ['focus'] },
     { name: 'textarea', methods: ['focus'] },
     { name: 'picker', methods: ['show'] },
+    { name: 'canvas', types: ['canvas'], methods: ['toTempFilePath', 'getContext'] },
     { name: 'web', methods: ['reload', 'forward', 'back', 'canForward', 'canBack'] }
   ]
 
@@ -221,6 +229,9 @@ function initAOP() {
       callActionJsonList.push(msg)
     }
   }
+
+  // TODO 通过开关控制
+  proxyCallNative()
 }
 
 function initApp(dslName) {
