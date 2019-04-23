@@ -10,3 +10,10 @@ dist/debug
 dist/release/output
 
 **/*.js.map
+*.md
+*.pdf
+
+.gitignore
+.eslintrc
+.eslintignore
+.prettierignore

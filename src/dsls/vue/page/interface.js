@@ -16,11 +16,11 @@ import { updatePageActions } from './misc'
  * 初始化页面
  * @param {object} page page实例
  * @param {string} code 页面代码字符串
- * @param {object} data app传入的数据
+ * @param {object} query app传入的数据
  * @param {object} globals 全局变量
  * @return {object}
  */
-function initPage(page, code, data, globals) {
+function initPage(page, code, query, globals) {
   const instanceId = page.id
 
   // 对原有streamer实例方法进行拦截
@@ -44,7 +44,7 @@ function initPage(page, code, data, globals) {
   })
 
   // instance实例上挂载Vue实例
-  const Vue = (instance.Vue = createVueModuleInstance(instanceId, { page: page }, data))
+  const Vue = (instance.Vue = createVueModuleInstance(instanceId, { page: page }, query))
 
   // 实例代码执行需要的全局参数
   const instanceVars = Object.assign(

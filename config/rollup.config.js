@@ -5,18 +5,21 @@
 import path from 'path'
 import fs from 'fs'
 
-import json from 'rollup-plugin-json'  // 通过import引入json文件
-import eslint from 'rollup-plugin-eslint'  // 代码风格检查
-import nodeResolve from 'rollup-plugin-node-resolve'  // 解析npm包
-import commonjs from 'rollup-plugin-commonjs'  // commonJS转换为ES6
-import buble from 'rollup-plugin-buble'  // 转化相应的v8版本的ES6语法特性
+import json from 'rollup-plugin-json' // 通过import引入json文件
+import { eslint } from 'rollup-plugin-eslint' // 代码风格检查
+import nodeResolve from 'rollup-plugin-node-resolve' // 解析npm包
+import commonjs from 'rollup-plugin-commonjs' // commonJS转换为ES6
+import buble from 'rollup-plugin-buble' // 转化相应的v8版本的ES6语法特性
 import replace from 'rollup-plugin-replace' // Likely with DefinePlugin
 import { terser } from 'rollup-plugin-terser' // terser用来混淆ES6代码
 import alias from 'rollup-plugin-alias'
 
 const pkg = require('../package.json')
 const version = pkg.version
-const date = new Date().toISOString().split('T')[0].replace(/-/g, '')
+const date = new Date()
+  .toISOString()
+  .split('T')[0]
+  .replace(/-/g, '')
 
 // 配置环境
 const nodeConf = parse()
@@ -62,25 +65,20 @@ const rollConf = {
       }
     }),
     replace({
-      exclude: [
-        'node_modules/**',
-        'package.json'
-      ],
+      exclude: ['node_modules/**', 'package.json'],
       values: rollInject
     })
   ]
 }
 
 if (nodeConf.NODE_PHASE === 'dv') {
-}
-else {
+} else {
   // Uglify
   rollConf.plugins.push(terser())
 }
 
 if (nodeConf.NODE_PLATFORM === 'h5') {
-}
-else {
+} else {
 }
 
 const confList = nodeConf.list.map(item => {
@@ -93,7 +91,7 @@ export default confList
 /**
  * 解析NODE环境的参数
  */
-function parse (config) {
+function parse(config) {
   config = config || {}
   // 平台：na
   config.NODE_PLATFORM = process.env.NODE_PLATFORM
@@ -126,7 +124,7 @@ function parse (config) {
  * @param {string} env debug/release
  * @param {string} moduleSrc module文件夹位置
  */
-function collectExportList (env, dslsSrc) {
+function collectExportList(env, dslsSrc) {
   const list = []
 
   fs.readdirSync(dslsSrc).forEach(dir => {
