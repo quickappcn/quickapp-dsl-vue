@@ -20,10 +20,14 @@ describe('框架：01.页面以及框架初始化', () => {
     path: '/specified'
   }
 
+  let query = {
+    k1: 'v1'
+  }
+
   before(() => {
     callActionJsonList.splice(0)
 
-    initPage(pageId, null, __dirname, {}, intent, meta)
+    initPage(pageId, null, __dirname, query, intent, meta)
     page = global.getPage(pageId)
     pageVm = page.vm
   })
@@ -47,6 +51,8 @@ describe('框架：01.页面以及框架初始化', () => {
     expect(pageVm.$page.name).to.equal(meta.name)
     expect(pageVm.$page.component).to.equal(meta.component)
     expect(pageVm.$page.path).to.equal(meta.path)
+    // 请求参数
+    expect(pageVm.$page.query).to.equal(query)
   })
 
   it('数据初始化正确', () => {

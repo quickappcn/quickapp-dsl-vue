@@ -54,8 +54,8 @@ function postHook(webpackConf, defaults, options) {
       if (stats.isFile() && jsReg.test(subFile)) {
         // 正则紧接上文
         const key = `test/build/dsls/${subFile.replace(
-          /(.*)(test(\/|\\)suite(\/|\\)dsls(\/|\\))(.*)(\b(app|index)\b\.vue$)/,
-          (...args) => args[6]
+          /(.*)(test[\\/]suite[\\/]dsls[\\/])(.*)(\b(app|index)\b\.vue$)/,
+          ($0, $1, $2, $3) => $3
         )}${type}`
         webpackConf.entry[key] = `${subFile}?vueType=${type === 'app' ? 'app' : 'page'}`
         console.log('### App Loader ### 添加 entry: ', key)

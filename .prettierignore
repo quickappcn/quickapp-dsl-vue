@@ -1,0 +1,4 @@
+dist/**
+/test/build/**
+/src/dsls/vue/vm/factory.js
+/src/dsls/vue/vm/factory-with-compiler.js
