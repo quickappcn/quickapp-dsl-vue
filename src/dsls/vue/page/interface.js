@@ -78,11 +78,12 @@ function initPage(page, code, query, globals) {
  * @param {object} page 对应的页面
  * @param {string} event 传入的事件名
  * @param {any} params 事件触发时的参数
+ * @param {array} args 事件除了params额外携带的参数
  */
-function invokePageEvent(event, page, params) {
+function invokePageEvent(event, page, params, ...args) {
   let result = false
   if (page.vm && page.vm._ready) {
-    page.vm.$emit(`xlc:${event}`, params)
+    page.vm.$emit(`xlc:${event}`, params, ...args)
     result = page.vm._events[`xlc:${event}`].result
     updatePageActions(page)
     console.trace(`### App Framework ### ${event} (${page.id})----`)

@@ -66,4 +66,8 @@ function init(quickapp) {
   quickapp.subscribe(APP_KEYS.onOrientationChange, args => {
     return invokePageEvent(VM_KEYS.onOrientationChange, ...args)
   })
+
+  quickapp.subscribe(APP_KEYS.onRefresh, args => {
+    return invokePageEvent(VM_KEYS.onRefresh, ...args)
+  })
 }

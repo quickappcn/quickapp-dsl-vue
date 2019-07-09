@@ -14,6 +14,12 @@ export const config = {
       mode: 0
     },
     {
+      name: 'methodSync2',
+      type: 0,
+      mode: 0,
+      multiple: 1
+    },
+    {
       name: 'methodCallback1',
       type: 0,
       mode: 1
@@ -30,9 +36,21 @@ export const config = {
       mode: 2
     },
     {
+      name: 'methodSubscribe2',
+      type: 0,
+      mode: 2,
+      multiple: 1
+    },
+    {
       name: 'methodUnsubscribe1',
       type: 0,
       mode: 0
+    },
+    {
+      name: 'methodUnsubscribe2',
+      type: 0,
+      mode: 0,
+      multiple: 1
     },
     {
       name: 'getAttr',
@@ -93,6 +111,7 @@ const moduleOwn = Object.assign(
     name: 'system.sample',
 
     handlerSubscribe1: null,
+    handlerSubscribe2: null,
 
     readwrite: undefined,
     readonly: 'v1',
@@ -101,6 +120,11 @@ const moduleOwn = Object.assign(
     handlerCustomEvent1: null,
 
     methodSync1(options = {}) {
+      return this.mockSync(options._data, options._code)
+    },
+
+    // multiple 类型的调用
+    methodSync2(options = {}) {
       return this.mockSync(options._data, options._code)
     },
 
@@ -119,8 +143,19 @@ const moduleOwn = Object.assign(
       }
     },
 
+    methodSubscribe2(options = {}, callbackId) {
+      if (!this.handlerSubscribe2) {
+        this.handlerSubscribe2 = this.mockSubscribe(callbackId, options._data, options._code)
+      }
+    },
+
     methodUnsubscribe1(options) {
       this.mockUnsubscribe(this.handlerSubscribe1)
+      this.handlerSubscribe1 = null
+    },
+
+    methodUnsubscribe2() {
+      this.mockUnsubscribe(this.handlerSubscribe2)
       this.handlerSubscribe1 = null
     },
 

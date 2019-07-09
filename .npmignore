@@ -13,6 +13,8 @@ dist/release/output
 *.md
 *.pdf
 
+resource/*
+
 .gitignore
 .eslintrc
 .eslintignore

@@ -11,7 +11,8 @@ const VM_KEYS = {
   onBackPress: 'onBackPress',
   onMenuPress: 'onMenuPress',
   onDestroy: 'onDestroy',
-  onOrientationChange: 'onOrientationChange'
+  onOrientationChange: 'onOrientationChange',
+  onRefresh: 'onRefresh'
 }
 
 const instances = {}
@@ -127,6 +128,13 @@ function createVueModuleInstance(instanceId, options, data) {
               context.quickapp.runtime.helper.exitFullscreen(page.doc)
             }
           },
+          setStatusBar: function(attr) {
+            // 如果是页面对象
+            if (page && page.doc) {
+              console.log(`### App Framework ### 页面 ${page.id} 调用 setStatusBar ----`)
+              context.quickapp.runtime.helper.updatePageStatusBar(page.doc, attr)
+            }
+          },
           finish: function() {
             // 调用native侧提供的接口，销毁页面对象
             if (page && page.doc) {
@@ -166,7 +174,7 @@ function createVueModuleInstance(instanceId, options, data) {
    */
   Vue.prototype._registerPageLifecycle = function() {
     Object.keys(VM_KEYS).forEach(item => {
-      this.$on(`xlc:${item}`, args => {
+      this.$on(`xlc:${item}`, (...args) => {
         let result = false
         const hook = this.$options[item]
         if (!hook || typeof hook !== 'function') return
@@ -174,7 +182,7 @@ function createVueModuleInstance(instanceId, options, data) {
         if (handlers && handlers.length) {
           for (let i = 0; i < handlers.length; i++) {
             try {
-              const r = handlers[i].call(this, args)
+              const r = handlers[i].apply(this, args)
               if (r) {
                 result = true
               }

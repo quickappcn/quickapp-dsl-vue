@@ -6,7 +6,9 @@ const path = require('path')
 const fs = require('fs')
 const webpack = require('webpack')
 
-const HandlerPlugin = require(resolvePlugin('handler-plugin', 'common'))
+const HandlerPlugin = require('@hap-toolkit/packager/lib/plugin/handler-plugin')
+const uxLoader = require.resolve('@hap-toolkit/dsl-xvm/lib/loader/ux-loader.js')
+const moduleLoader = require.resolve('@hap-toolkit/packager/lib/loader/module-loader.js')
 
 // 支持文件扩展名
 const FILE_EXT_LIST = ['.ux']
@@ -31,15 +33,19 @@ module.exports = {
     rules: [
       {
         test: new RegExp(`(${FILE_EXT_LIST.map(k => '\\' + k).join('|')})(\\?[^?]+)?$`),
-        loaders: [require.resolve(resolveLoader('ux-loader.js'))]
+        loaders: uxLoader
       },
       {
         test: /\.js/,
-        loaders: [require.resolve(resolveLoader('module-loader.js', 'common')), 'babel-loader']
+        loaders: [moduleLoader, 'babel-loader']
       }
     ]
   },
-  plugins: [new HandlerPlugin()],
+  plugins: [
+    new HandlerPlugin({
+      workers: ''
+    })
+  ],
   resolve: {
     extensions: ['.webpack.js', '.web.js', '.js', '.json'].concat(FILE_EXT_LIST),
     alias: {
@@ -61,12 +67,7 @@ module.exports = {
     process: false
   }
 }
-function resolveLoader(loader, type = 'ux') {
-  return path.join('hap-toolkit/packager/lib', `dsl/${type}/loader`, loader)
-}
-function resolvePlugin(plugin, type = 'ux') {
-  return path.join('hap-toolkit/packager/lib', `dsl/${type}/plugin`, plugin)
-}
+
 // 加载vue相关配置
 const moduleWebpackConf = require('./config/webpack.config')
 if (moduleWebpackConf.postHook) {

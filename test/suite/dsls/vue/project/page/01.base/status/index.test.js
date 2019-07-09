@@ -28,6 +28,17 @@ describe('框架：01.页面以及VM的状态管理', () => {
 
   afterEach(() => {})
 
+  it(`生命周期onRefresh的触发`, () => {
+    // 全局函数
+    const query = { k1: 'v1' }
+    const intent = {}
+    global.refreshPage(pageId, query, intent)
+
+    // 刷新调用
+    expect(pageVm.refreshQuery).to.equal(query)
+    expect(pageVm.refreshIntent).to.equal(intent)
+  })
+
   it('属性$valid,$visbible', async () => {
     // 创建页面之后
     expect(page.$valid).to.equal(true)

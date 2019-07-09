@@ -7,9 +7,9 @@ const fs = require('fs')
 
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
-const HandlerPlugin = require('hap-toolkit/packager/lib/dsl/common/plugin/handler-plugin')
-const Css2jsonPlugin = require('hap-toolkit/packager/lib/dsl/vue/plugin/css2json-plugin')
-const InstVuePlugin = require('hap-toolkit/packager/lib/dsl/vue/plugin/instvue-plugin')
+const HandlerPlugin = require('@hap-toolkit/packager/lib/plugin/handler-plugin')
+const Css2jsonPlugin = require('@hap-toolkit/dsl-vue/lib/plugin/css2json-plugin')
+const InstVuePlugin = require('@hap-toolkit/dsl-vue/lib/plugin/instvue-plugin')
 
 /**
  * 配置关联
