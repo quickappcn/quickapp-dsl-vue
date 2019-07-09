@@ -1,6 +1,6 @@
 {
   "name": "quickapp-dsls",
-  "version": "0.1.3",
+  "version": "0.1.5",
   "description": "dsls-for-quickapp",
   "scripts": {
     "prettier": "prettier \"**/*.{md,js,json}\" --write",
@@ -53,7 +53,7 @@
     "eslint-plugin-node": "^8.0.1",
     "eslint-plugin-promise": "^4.0.1",
     "eslint-plugin-standard": "^4.0.0",
-    "hap-toolkit": "^0.2.0",
+    "hap-toolkit": "^0.5.6",
     "husky": "^1.3.1",
     "json-loader": "0.5.4",
     "lint-staged": "^8.1.4",

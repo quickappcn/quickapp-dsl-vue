@@ -86,5 +86,13 @@ describe('框架：01.页面以及框架初始化', () => {
     expect(callActionJsonList.length).to.equal(2)
     expect(callActionJsonList[0]).to.include('exitFullscreen')
     callActionJsonList.splice(0)
+
+    docPage.setStatusBar(attr)
+    await waitForOK()
+
+    expect(callActionJsonList.length).to.equal(2)
+    expect(callActionJsonList[0]).to.include('updateStatusBar')
+    expect(callActionJsonList[0]).to.include(JSON.stringify(attr))
+    callActionJsonList.splice(0)
   })
 })

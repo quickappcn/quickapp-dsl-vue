@@ -20,6 +20,10 @@
       toggleRender () {
         this.boolRender = !this.boolRender
       }
+    },
+    onRefresh (query, intent) {
+      this.refreshQuery = query
+      this.refreshIntent = intent
     }
   }
 </script>

@@ -24,6 +24,8 @@ const APP_KEYS = {
   onMenuPress: 'quickapp.page.onMenuPress',
   // 页面朝向响应
   onOrientationChange: 'quickapp.page.onOrientationChange',
+  // 页面朝向响应
+  onRefresh: 'quickapp.page.onRefresh',
   // 页面：组件方法的callback()执行完毕，Native接口的回调完毕，定时器完毕
   callbackDone: 'quickapp.page.callbackDone'
 }

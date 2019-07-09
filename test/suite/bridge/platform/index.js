@@ -148,6 +148,11 @@ function initMainPlatform(dslName) {
       return Base64.arrayBufferToBase64(new Uint8ClampedArray())
     }
   }
+  // 全局ViewId函数
+  global.getPageElementViewId = function(ref) {
+    return 1e3 + ref
+  }
+
   // 注册模块
   global.registerModules([], 'modules')
   // 注册组件

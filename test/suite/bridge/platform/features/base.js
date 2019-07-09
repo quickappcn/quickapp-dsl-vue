@@ -49,8 +49,31 @@ const base = {
     }, waitTime)
   },
 
+  setTimeoutMulti(actionCallbacks, callbackId, data, code) {
+    const cb = global.setTimeout(() => {
+      global.execInvokeCallback({
+        callback: callbackId,
+        data: this.mockResult(data, code)
+      })
+    }, waitTime)
+    actionCallbacks[callbackId] = cb
+  },
+
   clearTimeout(handler) {
     handler && global.clearTimeout(handler)
+  },
+
+  clearTimeoutMulti(actionCallbacks, callbackId) {
+    let cbs = []
+    if (callbackId > -1) {
+      cbs.push(actionCallbacks[callbackId])
+    } else {
+      cbs = Object.values(actionCallbacks)
+    }
+
+    for (const i in cbs) {
+      this.clearTimeout(cbs[i])
+    }
   }
 }
 

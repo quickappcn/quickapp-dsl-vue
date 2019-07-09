@@ -10,6 +10,8 @@ import * as worker from './worker'
 import * as class1 from './class1'
 import * as websocket from './websocket'
 import * as websocketfactory from './websocketfactory'
+import * as ad from './ad'
+import * as bannerAd from './bannerAd'
 
 // Feature全局注册的配置
 export const allFeatureMethList = []
@@ -17,7 +19,18 @@ export const allFeatureMethList = []
 export const allFeatureInstHash = {}
 
 // Feature列表
-const fnList = [sample, canvas, router, animation, worker, class1, websocket, websocketfactory]
+const fnList = [
+  sample,
+  canvas,
+  router,
+  animation,
+  worker,
+  class1,
+  websocket,
+  websocketfactory,
+  ad,
+  bannerAd
+]
 
 // 注册Module
 fnList.forEach(fn => {
