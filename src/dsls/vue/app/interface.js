@@ -35,7 +35,7 @@ export function initApp(inst, code) {
   let functionBody
   functionBody = code.toString()
   // 重新封装代码
-  functionBody = `(function(global){"use strict"; \n ${functionBody}; \n })(Object.create(this))`
+  functionBody = `(function(global){"use strict"; ${functionBody}; \n })(Object.create(this))`
   console.trace(`### App Framework ### 开始编译代码----`)
 
   if (ENV_PLATFORM === 'na') {
@@ -46,6 +46,6 @@ export function initApp(inst, code) {
       $app_bootstrap$: instBootstrap
     }
 
-    invokeScript(globalObjects, functionBody, '/app.js')
+    invokeScript(globalObjects, functionBody, 'app.js')
   }
 }

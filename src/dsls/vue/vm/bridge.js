@@ -11,6 +11,7 @@ const VM_KEYS = {
   onBackPress: 'onBackPress',
   onMenuPress: 'onMenuPress',
   onDestroy: 'onDestroy',
+  onConfigurationChanged: 'onConfigurationChanged',
   onOrientationChange: 'onOrientationChange',
   onRefresh: 'onRefresh'
 }

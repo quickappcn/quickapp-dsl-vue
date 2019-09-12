@@ -108,6 +108,16 @@ function parse(baseDir, partDir, common) {
           fs.writeFileSync(manifestDest, fs.readFileSync(manifestFrom))
         }
       }
+      // 临时：负责复制i18n
+      if (partDir === 'xvm/app/i18n') {
+        console.log('### App Loader ### 复制国际化文件')
+        if (extname === '.json') {
+          name = path.join('test', 'build/dsls', partDir, filename)
+          const relativePath = path.relative(__dirname + '/../../', fullpath)
+          mkdirp(path.dirname(name))
+          fs.writeFileSync(name, fs.readFileSync(fullpath))
+        }
+      }
     } else if (stat.isDirectory()) {
       const subdir = path.join(partDir, filename)
       const isCommon = common || filename.toLowerCase() === 'common'

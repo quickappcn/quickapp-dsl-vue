@@ -57,6 +57,8 @@ describe('框架：01.页面以及框架初始化', () => {
 
   it('数据初始化正确', () => {
     expect(pageVm.d1Str).to.equal('v1Str')
+    // 请求参数
+    expect(pageVm.query).to.equal(query)
   })
 
   it('DOM初始化正确', () => {

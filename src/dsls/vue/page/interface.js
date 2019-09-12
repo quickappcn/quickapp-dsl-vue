@@ -60,10 +60,10 @@ function initPage(page, code, query, globals) {
   // 处理代码
   let functionBody
   functionBody = code.toString()
-  functionBody = '(function(global){ \n' + functionBody + '\n })(Object.create(this))'
+  functionBody = '(function(global){' + functionBody + '\n })(Object.create(this))'
 
   if (ENV_PLATFORM === 'na') {
-    const bundleUrl = page.pageName ? `/${page.pageName}/${page.pageComponent}.js` : '<anonymous>'
+    const bundleUrl = page.pageName ? `${page.pageName}/${page.pageComponent}.js` : '<anonymous>'
     console.trace(`### App Framework ### bundleUrl----`, bundleUrl)
     invokeScript(instanceVars, functionBody, bundleUrl)
   }

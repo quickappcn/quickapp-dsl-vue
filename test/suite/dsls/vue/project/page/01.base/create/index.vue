@@ -10,6 +10,9 @@
       return {
         d1Str: 'v1Str'
       }
+    },
+    onInit(query) {
+      this.query = query
     }
   }
 </script>
