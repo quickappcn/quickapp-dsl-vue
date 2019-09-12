@@ -47,6 +47,37 @@ function getAppDir(dslName) {
   return path.join(__dirname, `../../../build/dsls/${ALIAS[dslName]}/app`)
 }
 
+/**
+ * 加载系统locale与RPK中的locale资源
+ * @param dirApp
+ */
+function loadLocaleConfig(dirApp) {
+  const localeObject = {
+    language: 'zh',
+    countryOrRegion: 'CN'
+  }
+
+  const localeResHash = {}
+
+  const i18nDir = path.join(dirApp, 'i18n')
+  if (fs.existsSync(i18nDir)) {
+    fs.readdirSync(i18nDir).forEach(function(filename) {
+      const basename = path.parse(filename).name
+      const filepath = path.join(i18nDir, filename)
+      const filejson = JSON.parse(getFileContent(filepath))
+      localeResHash[basename] = filejson
+    })
+  }
+
+  const resources = ['zh-CN', 'zh', 'en', 'defaults']
+    .map(name => {
+      return localeResHash[name]
+    })
+    .filter(obj => !!obj)
+
+  return [localeObject, resources]
+}
+
 function uniqueId() {
   return unique++
 }
@@ -69,8 +100,15 @@ function initMainPlatform(dslName) {
     { name: 'input', methods: ['focus'] },
     { name: 'textarea', methods: ['focus'] },
     { name: 'picker', methods: ['show'] },
-    { name: 'canvas', types: ['canvas'], methods: ['toTempFilePath', 'getContext'] },
-    { name: 'web', methods: ['reload', 'forward', 'back', 'canForward', 'canBack'] }
+    {
+      name: 'canvas',
+      types: ['canvas'],
+      methods: ['toTempFilePath', 'getContext']
+    },
+    {
+      name: 'web',
+      methods: ['reload', 'forward', 'back', 'canForward', 'canBack']
+    }
   ]
 
   // 引入框架
@@ -188,6 +226,11 @@ function initWorkerPlatform(dslName = 'xvm') {
   // 接口定义
   global.JsBridge = global.ModuleManager = {
     invoke(moduleName, methodName, args, callbackId, moduleInstId) {
+      if (args === undefined) {
+        throw new Error(
+          `ERROR: moduleName:${moduleName}, methodName:${methodName} 的参数为undefined`
+        )
+      }
       if (typeof args === 'string') {
         args = JSON.parse(args)
       }
@@ -230,8 +273,11 @@ function initAOP() {
 
     for (let i = 0, len = actionList.length; i < len; i++) {
       const actionItem = actionList[i]
-      const msg = `${JSON.stringify(actionItem)}`
-      callActionJsonList.push(msg)
+      // 忽略统计数据
+      if (actionItem.method !== 'statistics') {
+        const msg = `${JSON.stringify(actionItem)}`
+        callActionJsonList.push(msg)
+      }
     }
   }
 
@@ -249,12 +295,17 @@ function initApp(dslName) {
 
   const appId = (defaultAppId = uniqueId())
   const appJs = getFileContent(fileApp)
+
+  const retI18n = loadLocaleConfig(dirApp)
+  // 更新locale
+  global.changeAppLocale(...retI18n)
+  // 创建APP
   global.createApplication(appId, appJs)
 
   global.bInited = true
 }
 
-function initPage(pageId, appId, srcPath, data, intent = {}, meta = {}) {
+function initPage(pageId, appId, srcPath, query = {}, intent = {}, meta = {}) {
   let srcFilePath = srcPath
 
   if (fs.statSync(srcPath).isDirectory()) {
@@ -270,7 +321,7 @@ function initPage(pageId, appId, srcPath, data, intent = {}, meta = {}) {
     pageId,
     appId,
     dstFileCont,
-    data,
+    query,
     intent || { currentPageName: 'undefined' },
     meta,
     css

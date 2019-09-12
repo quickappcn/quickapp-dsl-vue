@@ -28,7 +28,11 @@ describe('框架：01.调试器工具', () => {
     // 替换
     const action1 = { action: 'add', name: 'lines', value: 3 }
     const action2 = { action: 'edit', name: 'font-size', value: '64px' }
-    const action3 = { action: 'edit', name: 'style', value: 'background-color:#FF0000' }
+    const action3 = {
+      action: 'edit',
+      name: 'style',
+      value: 'background-color:#FF0000'
+    }
     global.setPageElementAttrs(page.id, inst1.ref, [action1, action2, action3])
 
     expect(inst1.attr[action1.name]).to.equal(action1.value)

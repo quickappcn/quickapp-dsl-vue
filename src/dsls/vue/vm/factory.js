@@ -6927,9 +6927,17 @@ Vue$2.prototype._connectLifecycle = function (options) {
     this$1._initExternalData();
   };
 
+  var initHook = function () {
+    var onInitHook = this$1.$options['onInit'];
+    if (onInitHook && typeof onInitHook === 'function') {
+      onInitHook.call(this$1, this$1._page._meta.query);
+    }
+  };
+
   options.created = options.created || [];
   options.created = Array.isArray(options.created) ? options.created : [options.created];
   options.created.push(initExternalData);
+  options.created.unshift(initHook);
 
   // // onDestroy 放到 Vue 的beforeDestroy钩子中执行
   // const pageDestroyHook = () => {

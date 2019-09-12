@@ -63,6 +63,10 @@ function init(quickapp) {
     return handleMenuPressEvent(...args)
   })
 
+  quickapp.subscribe(APP_KEYS.onConfigurationChanged, args => {
+    return invokePageEvent(VM_KEYS.onConfigurationChanged, ...args)
+  })
+
   quickapp.subscribe(APP_KEYS.onOrientationChange, args => {
     return invokePageEvent(VM_KEYS.onOrientationChange, ...args)
   })

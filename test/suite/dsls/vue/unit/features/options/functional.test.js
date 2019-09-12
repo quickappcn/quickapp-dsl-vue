@@ -157,9 +157,15 @@ describe('Options functional', () => {
           _vm._t('slot2'),
           _vm._t('scoped', null, { msg: _vm.props.msg }),
           _vm._m(0),
-          _c('div', { ref: 'ref1', staticClass: 'clickable', on: { click: _vm.parent.fn } }, [
-            _vm._v('click me')
-          ])
+          _c(
+            'div',
+            {
+              ref: 'ref1',
+              staticClass: 'clickable',
+              on: { click: _vm.parent.fn }
+            },
+            [_vm._v('click me')]
+          )
         ],
         2
       )
@@ -203,9 +209,7 @@ describe('Options functional', () => {
 
     function assertMarkup() {
       expect(toString(parent.$el)).to.equal(
-        `<div><div value="${parent.msg}"><h2 value="${parent.msg}" class="red"></h2><span value="${
-          parent.msg
-        }"></span><div value="Second slot"></div><div value="Some "><span value="text"></span></div><div value="click me" class="clickable"></div></div></div>`
+        `<div><div value="${parent.msg}"><h2 value="${parent.msg}" class="red"></h2><span value="${parent.msg}"></span><div value="Second slot"></div><div value="Some "><span value="text"></span></div><div value="click me" class="clickable"></div></div></div>`
       )
     }
 

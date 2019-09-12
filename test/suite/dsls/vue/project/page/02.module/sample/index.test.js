@@ -114,7 +114,11 @@ describe('框架：02.native接口', () => {
     })
 
     // 异步接口返回接口实例
-    const metaDataCallback1 = { name: 'system.sample', instId: 2, _nativeType: 0 }
+    const metaDataCallback1 = {
+      name: 'system.sample',
+      instId: 2,
+      _nativeType: 0
+    }
     sample.methodBindInstCallback1({
       _data: metaDataCallback1,
       success: result => {
@@ -127,10 +131,14 @@ describe('框架：02.native接口', () => {
     })
     // 调用接口方法时，底层应该收到上面的moduleInstId
     modRet.methodBindInstSync1({
-      _data: Object.assign(metaDataCallback1, { moduleInstId: metaDataCallback1.instId })
+      _data: Object.assign(metaDataCallback1, {
+        moduleInstId: metaDataCallback1.instId
+      })
     })
     modRet.methodBindInstCallback1({
-      _data: Object.assign(metaDataCallback1, { moduleInstId: metaDataCallback1.instId })
+      _data: Object.assign(metaDataCallback1, {
+        moduleInstId: metaDataCallback1.instId
+      })
     })
   })
 

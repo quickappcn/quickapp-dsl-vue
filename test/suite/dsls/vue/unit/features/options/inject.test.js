@@ -376,7 +376,10 @@ describe('Options provide/inject', () => {
   it('should not warn when injection key which is not provided is not enumerable', () => {
     const parent = new Vue({ provide: { foo: 1 } })
     const inject = { foo: 'foo' }
-    Object.defineProperty(inject, '__ob__', { enumerable: false, value: '__ob__' })
+    Object.defineProperty(inject, '__ob__', {
+      enumerable: false,
+      value: '__ob__'
+    })
     new Vue({ parent, inject })
     expect(countError).to.equal(0)
   })
