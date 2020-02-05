@@ -122,6 +122,20 @@ function createVueModuleInstance(instanceId, options, data) {
               context.quickapp.runtime.helper.updatePageTitleBar(page.doc, attr)
             }
           },
+          scrollTo: function(attr) {
+            // 如果是页面对象
+            if (page && page.doc) {
+              console.log(`### App Framework ### 页面 ${page.id} 调用 scrollTo ----`)
+              context.quickapp.runtime.helper.scrollTo(page.doc, attr)
+            }
+          },
+          scrollBy: function(attr) {
+            // 如果是页面对象
+            if (page && page.doc) {
+              console.log(`### App Framework ### 页面 ${page.id} 调用 scrollBy ----`)
+              context.quickapp.runtime.helper.scrollBy(page.doc, attr)
+            }
+          },
           exitFullscreen: function() {
             // 如果是页面对象
             if (page && page.doc) {

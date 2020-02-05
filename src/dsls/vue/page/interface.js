@@ -50,9 +50,13 @@ function initPage(page, code, query, globals) {
   const instanceVars = Object.assign(
     {
       Vue: Vue,
+      $app_define$: () => {},
+      $app_bootstrap$: () => {},
+      $app_define_wrap$: () => {},
       $app_require$: name => {
         return context.quickapp.platform.requireModule(page, removeAppPrefix(name))
-      }
+      },
+      $app_evaluate$: context.quickapp.dock.makeEvaluateBuildScript(globals)
     },
     globals
   )
