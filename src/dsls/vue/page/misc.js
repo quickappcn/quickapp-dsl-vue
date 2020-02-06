@@ -31,8 +31,11 @@ function fireEvent(page, ref, type, e, domChanges) {
  * @param page 页面对象
  */
 function destroyPage(page) {
-  page.vm.$emit(`xlc:onDestroy`)
-  page.vm && page.vm.$destroy()
+  // 如果有VM，销毁VM
+  if (page.vm) {
+    page.vm.$emit(`xlc:onDestroy`)
+    page.vm.$destroy()
+  }
 }
 
 /**

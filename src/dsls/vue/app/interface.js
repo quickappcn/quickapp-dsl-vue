@@ -31,6 +31,8 @@ export function initApp(inst, code) {
     inst.$emit('applc:onCreate')
   }
 
+  const instEvaluate = context.quickapp.dock.makeEvaluateBuildScript(null)
+
   // 处理代码
   let functionBody
   functionBody = code.toString()
@@ -43,7 +45,8 @@ export function initApp(inst, code) {
     const globalObjects = {
       $app_define$: instDefine,
       $app_require$: instRequireModule,
-      $app_bootstrap$: instBootstrap
+      $app_bootstrap$: instBootstrap,
+      $app_evaluate$: instEvaluate
     }
 
     invokeScript(globalObjects, functionBody, 'app.js')
